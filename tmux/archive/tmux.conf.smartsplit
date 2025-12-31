@@ -1,0 +1,117 @@
+unbind r
+bind r source-file ~/.config/tmux/tmux.conf
+
+set -g prefix C-s
+set -g mouse on
+
+set-option -g status-position top
+set -g base-index 1
+set -g renumber-windows on
+
+set-option -g allow-passthrough on
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'mrjones2014/smart-splits.nvim'
+
+# Optional configurations with their default values if omitted:
+
+set -g @smart-splits_no_wrap '' # to disable wrapping. (any value disables wrapping)
+
+set -g @smart-splits_move_left_key  'C-h' # key-mapping for navigation.
+set -g @smart-splits_move_down_key  'C-j' #  --"--
+set -g @smart-splits_move_up_key    'C-k' #  --"--
+set -g @smart-splits_move_right_key 'C-l' #  --"--
+
+# set -g @smart-splits_resize_left_key  'M-h' # key-mapping for resizing.
+# set -g @smart-splits_resize_down_key  'M-j' #  --"--
+# set -g @smart-splits_resize_up_key    'M-k' #  --"--
+# set -g @smart-splits_resize_right_key 'M-l' #  --"--
+
+set -g @smart-splits_resize_step_size '3' # change the step-size for resizing.
+
+# '@pane-is-vim' is a pane-local option that is set by the plugin on load,
+# and unset when Neovim exits or suspends; note that this means you'll probably
+# not want to lazy-load smart-splits.nvim, as the variable won't be set until
+# the plugin is loaded
+
+# Smart pane switching with awareness of Neovim splits.
+# bind-key -n C-h if -F "#{@pane-is-vim}" 'send-keys C-h'  'select-pane -L'
+# bind-key -n C-j if -F "#{@pane-is-vim}" 'send-keys C-j'  'select-pane -D'
+# bind-key -n C-k if -F "#{@pane-is-vim}" 'send-keys C-k'  'select-pane -U'
+# bind-key -n C-l if -F "#{@pane-is-vim}" 'send-keys C-l'  'select-pane -R'
+
+# Alternatively, if you want to disable wrapping when moving in non-neovim panes, use these bindings
+# bind-key -n C-h if -F '#{@pane-is-vim}' { send-keys C-h } { if -F '#{pane_at_left}'   '' 'select-pane -L' }
+# bind-key -n C-j if -F '#{@pane-is-vim}' { send-keys C-j } { if -F '#{pane_at_bottom}' '' 'select-pane -D' }
+# bind-key -n C-k if -F '#{@pane-is-vim}' { send-keys C-k } { if -F '#{pane_at_top}'    '' 'select-pane -U' }
+# bind-key -n C-l if -F '#{@pane-is-vim}' { send-keys C-l } { if -F '#{pane_at_right}'  '' 'select-pane -R' }
+
+tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if -F \"#{@pane-is-vim}\" 'send-keys C-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if -F \"#{@pane-is-vim}\" 'send-keys C-\\\\'  'select-pane -l'"
+
+bind-key -T copy-mode-vi 'C-h' select-pane -L
+bind-key -T copy-mode-vi 'C-j' select-pane -D
+bind-key -T copy-mode-vi 'C-k' select-pane -U
+bind-key -T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+# Dracula theme
+set -g @plugin 'dracula/tmux'
+set -g @dracula-plugins "battery cwd ram-usage ssh-session"
+set -g @dracula-show-powerline true
+
+# Battery configuration
+set -g @dracula-battery-label "♥ "
+set -g @dracula-show-battery-status true
+
+# Current path (cwd) configuration
+set -g @dracula-cwd-max-dirs "2"
+set -g @dracula-cwd-max-chars "15"
+
+# RAM usage configuration
+set -g @dracula-ram-usage-label " "
+
+# SSH Session configuration
+set -g @dracula-show-ssh-only-when-connected true
+set -g @dracula-show-ssh-session-port true
+
+# Set colors for your plugins
+set -g @dracula-battery-colors "green dark_gray"
+set -g @dracula-cwd-colors "cyan dark_gray"
+set -g @dracula-ram-usage-colors "pink dark_gray"
+set -g @dracula-ssh-session-colors "purple dark_gray"
+
+# Additional settings
+set -g @dracula-refresh-rate 5
+set -g @dracula-show-flags true
+set -g @dracula-show-empty-plugins false
+
+# Set new panes to open in current directory
+bind c new-window -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+
+# Custom binding for POPUP
+bind C-f display-popup -d "#{pane_current_path}" -E "tmux new-session -A -s floting-session \; set status off"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+# Custom resizing with prefix + Ctrl + h/j/k/l (like vim-tmux-navigator, but for resizing)
+unbind C-l
+bind-key -r -T prefix C-k resize-pane -U 5
+bind-key -r -T prefix C-j resize-pane -D 5
+bind-key -r -T prefix C-h resize-pane -L 5
+bind-key -r -T prefix C-l resize-pane -R 5
+
+# True color settings
+# set -g default-terminal "$TERM"
+# set -ag terminal-overrides ",$TERM:Tc"
+set-option -g default-terminal "screen-256color"
+set -sg escape-time 10

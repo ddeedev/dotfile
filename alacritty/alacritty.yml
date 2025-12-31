@@ -1,0 +1,97 @@
+# ------------------------------------------------------------------
+# Alacritty Configuration translated from iTerm2 Settings
+# ------------------------------------------------------------------
+
+# Configuration taken from iTerm2 Text pane:
+# Font: MesloLGL Nerd Font Mono, Regular, Size 12
+# Note: Alacritty requires a specific font name.
+font:
+  normal:
+    family: MesloLGL Nerd Font Mono
+    style: Regular
+  bold:
+    family: MesloLGL Nerd Font Mono
+    style: Bold
+  italic:
+    family: MesloLGL Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: MesloLGL Nerd Font Mono
+    style: Bold Italic
+  size: 12.0
+
+# Alacritty's default is to use ligatures if the font supports them.
+# If you want to explicitly enable them:
+# draw_bold_text_with_bright_colors: true
+# selection:
+#   save_to_clipboard: true
+
+# Color Scheme: Dracula (Extracted from your iTerm2 XML file)
+colors:
+  # Default colors (Foreground, Background, Cursor)
+  primary:
+    # Foreground Color: #EFEFEF (from iTerm's Foreground Color)
+    foreground: "#efefef"
+    # Background Color: #282A36 (from iTerm's Background Color)
+    background: "#282a36"
+    # Cursor Color: #BBDDFF (from iTerm's Cursor Color - often needs to be more visible)
+    # The XML used #BBBBBB, but a more common Dracula cursor is often used. Sticking to the XML:
+    cursor: "#bbbbbb"
+
+  # Bright and Dim colors (used for bold/bright text)
+  normal:
+    # Ansi 0 Color (Black)
+    black: "#000000"
+    # Ansi 1 Color (Red)
+    red: "#ff6666"
+    # Ansi 2 Color (Green)
+    green: "#50fa7b"
+    # Ansi 3 Color (Yellow)
+    yellow: "#f1fa8c"
+    # Ansi 4 Color (Blue)
+    blue: "#bd93f9"
+    # Ansi 5 Color (Magenta)
+    magenta: "#ff79c6"
+    # Ansi 6 Color (Cyan)
+    cyan: "#8be9fd"
+    # Ansi 7 Color (White/Light Gray)
+    white: "#bbbbbb"
+
+  bright:
+    # Ansi 8 Color (Bright Black / Gray)
+    black: "#555555"
+    # Ansi 9 Color (Bright Red)
+    red: "#ff6666"
+    # Ansi 10 Color (Bright Green)
+    green: "#50fa7b"
+    # Ansi 11 Color (Bright Yellow)
+    yellow: "#f1fa8c"
+    # Ansi 12 Color (Bright Blue)
+    blue: "#bd93f9"
+    # Ansi 13 Color (Bright Magenta)
+    magenta: "#ff79c6"
+    # Ansi 14 Color (Bright Cyan)
+    cyan: "#8be9fd"
+    # Ansi 15 Color (Bright White)
+    white: "#ffffff"
+
+# Text Rendering Settings
+# The iTerm setting 'Draw bold text in bold font' is the default behavior in Alacritty.
+# To disable it (like some older terminals):
+# draw_bold_text_with_bright_colors: true
+
+# Cursor Style (based on iTerm's Default profile)
+# Your iTerm screenshot shows the Block cursor with no blink.
+cursor:
+  style:
+    shape: Block # This is the specific value required by modern versions
+    blinking: Never # Options: Always, Never, On, Off
+  # blink_interval: 0 # To disable blink if needed
+  # blink_timeout: 0
+# NOTE ON PADDING: You didn't provide a Window/Padding screenshot,
+# so I've used the Alacritty default. If you had padding in iTerm2,
+# you can adjust it here:
+# window:
+#   padding:
+#     x: 5  # Adjust as needed (Left/Right)
+#     y: 5  # Adjust as needed (Top/Bottom)

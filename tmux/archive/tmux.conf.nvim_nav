@@ -1,0 +1,70 @@
+unbind r
+bind r source-file ~/.config/tmux/tmux.conf
+
+set -g prefix C-s
+set -g mouse on
+
+set-option -g status-position top
+set -g base-index 1
+set -g renumber-windows
+
+set-option -g allow-passthrough on
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+set -g @plugin 'dracula/tmux'
+# Dracula theme configuration - replaced playerctl with ssh-session
+set -g @dracula-plugins "battery cwd ram-usage ssh-session"
+set -g @dracula-show-powerline true
+
+# Battery configuration
+set -g @dracula-battery-label "♥ "
+set -g @dracula-show-battery-status true
+
+# Current path (cwd) configuration - make it brief
+set -g @dracula-cwd-max-dirs "2"
+set -g @dracula-cwd-max-chars "15"
+
+# RAM usage configuration
+set -g @dracula-ram-usage-label " "
+
+# SSH Session configuration
+set -g @dracula-show-ssh-only-when-connected true
+set -g @dracula-show-ssh-session-port true
+
+# Set colors for your plugins
+set -g @dracula-battery-colors "green dark_gray"
+set -g @dracula-cwd-colors "cyan dark_gray"
+set -g @dracula-ram-usage-colors "pink dark_gray"
+set -g @dracula-ssh-session-colors "purple dark_gray"
+
+# Additional settings
+set -g @dracula-refresh-rate 5
+set -g @dracula-show-flags true
+set -g @dracula-show-empty-plugins false
+
+# Set new panes to open in current directory
+bind c new-window -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+
+
+# Custom binding for POPUP ⬅️ MOVE IT HERE
+# bind C-f display-popup -d "#{pane_current_path}" -E "${SHELL}"
+bind C-f display-popup -d "#{pane_current_path}" -E "tmux new-session -A -s floting-session \; set status off"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+# IMPORTANT: Custom key bindings MUST come AFTER plugin initialization
+# This ensures they override any plugin bindings
+unbind C-l
+bind-key -r -T prefix C-k resize-pane -U 5
+bind-key -r -T prefix C-j resize-pane -D 5
+bind-key -r -T prefix C-h resize-pane -L 5
+bind-key -r -T prefix C-l resize-pane -R 5
+
