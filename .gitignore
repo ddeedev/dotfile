@@ -1,7 +1,7 @@
 *
-
 !.gitignore
 
+# Allow the folders themselves
 !aerospace/
 !alacritty/
 !kitty/
