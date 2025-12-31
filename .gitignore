@@ -1,0 +1,12 @@
+*
+!.gitignore
+!aerospace/
+!alacritty/
+!kitty/
+!neofetch/
+!nvim/
+!skhd/
+!tmux/
+!wezterm/
+!yabai/
+!zellij/
