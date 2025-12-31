@@ -2,6 +2,7 @@
 !.gitignore
 
 # Allow the folders themselves
+!*/
 !aerospace/
 !alacritty/
 !kitty/
@@ -12,3 +13,6 @@
 !wezterm/
 !yabai/
 !zellij/
+
+zed/
+yarn/
