@@ -3,12 +3,22 @@
 !.gitignore
 
 !aerospace/
+!aerospace/**
 !alacritty/
+!alacritty/**
 !kitty/
+!kitty/**
 !neofetch/
+!neofetch/**
 !nvim/
+!nvim/**
 !skhd/
+!skhd/**
 !tmux/
+!tmux/**
 !wezterm/
+!wezterm/**
 !yabai/
+!yabai/**
 !zellij/
+!zellij/**
