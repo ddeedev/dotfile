@@ -56,7 +56,7 @@ automatically-unhide-macos-hidden-apps = false
 #                          "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
 #                          "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 #
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "A"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -81,10 +81,13 @@ preset = 'qwerty'
 2 = ['U34G2G4R3', '^built-in retina display$', 'main', 'secondary']
 3 = ['U34G2G4R3', '^built-in retina display$', 'main', 'secondary']
 4 = ['U34G2G4R3', '^built-in retina display$', 'main', 'secondary']
-5 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
+5 = ['U34G2G4R3', '^built-in retina display$', 'main', 'secondary']
+A = ['U34G2G4R3', '^built-in retina display$', 'main', 'secondary']
 6 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
 7 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
 8 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
+9 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
+10 = ['LG FHD', '^built-in retina display$', 'secondary', 'main']
 
 [gaps]
 inner.horizontal = 5
@@ -156,6 +159,9 @@ alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+alt-a = 'workspace A'
 #    alt-9 = 'workspace 9'
 #    alt-0 = 'workspace 10'
 #    alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
@@ -190,6 +196,10 @@ alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+### for archiving app
+alt-shift-a = 'move-node-to-workspace A'
 #    alt-shift-9 = 'move-node-to-workspace 9'
 #    alt-shift-0 = 'move-node-to-workspace 10'
 #    alt-shift-a = 'move-node-to-workspace A'

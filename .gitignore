@@ -22,3 +22,5 @@
 !yabai/**
 !zellij/
 !zellij/**
+
+.DS_Store

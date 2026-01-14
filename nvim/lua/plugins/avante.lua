@@ -6,7 +6,7 @@ return {
   opts = {
     -- add any opts here
     provider = "copilot",
-    auto_suggestions_provider = "claude",
+    auto_suggestions_provider = "copilot",
 
     -- keymap
     mappings = {
